@@ -251,7 +251,7 @@ class Cassette:
                 yield index, response
 
     def can_play_response_for(self, request):
-        log.info("PLTM_can_play_response_for_cassette: %s", self.requests)
+        log.info("PLTM_can_play_response_for_requests: %s", self.requests)
         log.info("PLTM_can_play_response_for_cassette_ID: %s", id(self))
         log.info("PLTM_can_play_response_for_request: %s", request)
         request = self._before_record_request(request)
