@@ -223,6 +223,7 @@ class Cassette:
     def append(self, request, response):
         """Add a request, response pair to this cassette"""
         log.info("PLTM_append_cassette: %s", self._as_dict())
+        log.info("PLTM_append_cassette_ID: %s", id(self))
         log.info("Appending request %s and response %s", request, response)
         request = self._before_record_request(request)
         if not request:
@@ -251,7 +252,7 @@ class Cassette:
 
     def can_play_response_for(self, request):
         log.info("PLTM_can_play_response_for_cassette: %s", self.requests)
-        log.info("PLTM_can_play_response_for_cassette: %s", id(self))
+        log.info("PLTM_can_play_response_for_cassette_ID: %s", id(self))
         log.info("PLTM_can_play_response_for_request: %s", request)
         request = self._before_record_request(request)
         log.info("PLTM_can_play_response_for__before_record_request: %s",  request)
