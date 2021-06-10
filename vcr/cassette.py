@@ -159,7 +159,11 @@ class Cassette:
     def load(cls, **kwargs):
         """Instantiate and load the cassette stored at the specified path."""
         new_cassette = cls(**kwargs)
+        log.info("PLTM_load_cassette: %s", id(new_cassette))
+        import traceback
+        log.info("Traceback: %s", traceback.print_stack(limit=6))
         new_cassette._load()
+        log.info("PLTM_loaded_cassette: %s", new_cassette._as_dict())
         return new_cassette
 
     @classmethod
