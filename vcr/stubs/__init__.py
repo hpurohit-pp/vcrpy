@@ -257,6 +257,7 @@ class VCRConnection:
                 "headers": serialize_headers(response),
                 "body": {"string": response.read()},
             }
+            log.info("response from server %s ", response)
             self.cassette.append(self._vcr_request, response)
         return VCRHTTPResponse(response)
 
