@@ -225,6 +225,8 @@ class Cassette:
 
     def append(self, request, response):
         """Add a request, response pair to this cassette"""
+        # import traceback
+        # log.info("PLTM_TARCE %s", traceback.print_stack())
         log.info("PLTM_append_cassette: %s", self._as_dict())
         log.info("PLTM_append_cassette_ID: %s", id(self))
         log.info("Appending request %s and response %s", request, response)

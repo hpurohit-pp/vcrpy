@@ -236,6 +236,18 @@ class VCRConnection:
             # and return it.
 
             log.info("{} not in cassette, sending to real server".format(self._vcr_request))
+            if '8126' in self._vcr_request.uri:
+                log.info("detected 8126 in %s ", self._vcr_request.uri)
+                # put the response into the cassette
+                response = {
+                    "status": {"code": 200, "message": 'OK'},
+                    "headers": {"header": "h1"},
+                    "body": {"string": "None"},
+                }
+                log.info("response from server %s ", response)
+                self.cassette.append(self._vcr_request, response)
+                return VCRHTTPResponse(response)
+
             # This is imported here to avoid circular import.
             # TODO(@IvanMalison): Refactor to allow normal import.
             from vcr.patch import force_reset
