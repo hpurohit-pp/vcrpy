@@ -60,9 +60,9 @@ class CassetteContextDecorator:
             for patcher in CassettePatcherBuilder(cassette).build():
                 exit_stack.enter_context(patcher)
             log_format = "{action} context for cassette at {path}."
-            log.debug(log_format.format(action="Entering", path=cassette._path))
+            log.info(log_format.format(action="Entering", path=cassette._path))
             yield cassette
-            log.debug(log_format.format(action="Exiting", path=cassette._path))
+            log.info(log_format.format(action="Exiting", path=cassette._path))
             # TODO(@IvanMalison): Hmmm. it kind of feels like this should be
             # somewhere else.
             cassette._save()
